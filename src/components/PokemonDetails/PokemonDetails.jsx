@@ -4,10 +4,10 @@ import axios from "axios";
 import "./PokemonDetails.css";
 import usePokemonDetails from "../../hooks/usePokemonDetails";
 
-function PokemonDetails() {
+function PokemonDetails({pokemonName}) {
   
     const { id } = useParams();
-    const [pokemon]= usePokemonDetails(id);
+    const [pokemon]= usePokemonDetails(id,pokemonName);
     
   return (
     <div className="pokemon-details-wrapper">
@@ -27,7 +27,7 @@ function PokemonDetails() {
             More {pokemon.types[0]} type Pokemons
 
             <ul>
-                {pokemon.similarPokemons.map((p) => <li key={p.pokemon.name}>{p.pokemon.name}</li>)}
+                {pokemon.similarPokemons.map((p) => <li key={p.pokemon.url}>{p.pokemon.name}</li>)}
             </ul>
         </div>
       )}
